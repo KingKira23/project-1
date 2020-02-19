@@ -10,12 +10,12 @@ $.ajax({
     method: "GET"
   })
     .then(function (response) {
-        //console.log(response.drinks[0]);
+        console.log(response.drinks[0]);
         //destructure the response object to discrete variables to use or display to the user
         ({ idDrink, strDrink: name, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
         //console.log(idDrink, name, instructions);
         buildIngredientsArray(response.drinks[0]);
-    });
+});
 
 
     //@@todo - response object has 15 ingredient properties and 15 corresponding measurement properties. Need to write a function to pair these up and omit all 'null' values
@@ -38,34 +38,23 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems);
 });
 
-
-let nextVideo = $("<iframe>");
-
-//nextVideo.attr("width", width).attr("height", height).attr("src", src);
-
-
-{/* < iframe 
-width="560" 
-height="315"
-src=""
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe> */}
-
-
 let searchName = name;
 let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
-
-let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?&maxResults=5&part=snippet&q=" + searchName + "&key="+ youtubeAPIKey
+let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=How+to+make+a" + searchName + "&key=" + youtubeAPIKey;
+let videoURL = "https://www.youtube.com/embed/";
 
 $.ajax({
   url: videoSearchURL,
   method: "GET"
 })
-  .then(function (response) {
-    console.log(response);
-  })
+.then(function (response) {
+  videoId = response.items[1].items.id.videoId;
+  videoURL = "https://www.youtube.com/embed/" + videoId;
+})
+
+let nextVideo = $(`<iframe width="1206" height="678" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+$("#carousel").append(nextVideo);
 
 var instance = M.Carousel.init({
   fullWidth: true,
