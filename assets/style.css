@@ -7,3 +7,42 @@ body {
   main {
     flex: 1 0 auto;
   }
+  #carBG{
+      background-color: #A188A6;
+      width: 100%;
+  }
+  .drinkStats{
+    background-color: #9DA2AB;
+    color: #01161E;
+      width: 100%;
+  }
+  .container{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #mainBG{
+      
+      background-color: #828489;
+      width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  p{
+      padding: 3%;
+  }
+  h2{
+      text-align: center;
+  }
+  nav{
+      background-color: #7F5A83;
+      color: #01161E;
+  }
+  .page-footer{
+    background-color: #7F5A83;
+    color: #01161E;
+  }
