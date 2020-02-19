@@ -67,3 +67,7 @@ $.ajax({
     console.log(response);
   })
 
+var instance = M.Carousel.init({
+  fullWidth: true,
+  indicators: true
+});
