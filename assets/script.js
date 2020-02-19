@@ -37,3 +37,33 @@ document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems);
 });
+
+
+let nextVideo = $("<iframe>");
+
+//nextVideo.attr("width", width).attr("height", height).attr("src", src);
+
+
+{/* < iframe 
+width="560" 
+height="315"
+src=""
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe> */}
+
+
+let searchName = name;
+let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+
+
+let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?&maxResults=5&part=snippet&q=" + searchName + "&key="+ youtubeAPIKey
+
+$.ajax({
+  url: videoSearchURL,
+  method: "GET"
+})
+  .then(function (response) {
+    console.log(response);
+  })
+
