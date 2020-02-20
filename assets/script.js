@@ -2,7 +2,7 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+// let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
 function Cocktail(name, id, ingredients, instructions, img ) {
   this.name = name;
@@ -61,7 +61,7 @@ $.ajax({
 function setVid(videoId) {
   let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;
-  let nextVideo = $(`<iframe width="1206" height="678" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+  let nextVideo = $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
   $("#carousel").append(nextVideo);
 }
 
