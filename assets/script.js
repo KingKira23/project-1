@@ -69,10 +69,31 @@ function setVid(videoId) {
 
 //adds content to the page 
 function displayTheCocktail(drinkObj){
+  var cocktailheading= $("#cocktailhead").text(drinkObj.name);
+  $("#ingredients").text(drinkObj.ingredients);
+  $("#instruction").text(drinkObj.instructions);
+  function displayingredients(){
+    for (i=0; i < drinkObj.ingredients.length; i++){
+      console.log(drinkObj.ingredients[i]);
+      var ingredientname= drinkObj.ingredients[i][0];
+      var ingredientmeasure= drinkObj.ingredients[i][1];
+      if (ingredientmeasure===null) {
+        ingredientmeasure= "to-taste"
+      }
+      $("#ingredients").append(ingredientname);
+      $("#instruction").append(ingredientmeasure);
+    }
+  }
+  $("#cocktailimg").attr("src", drinkObj.image);
 
   getVideos(drinkObj.name);
   console.log(drinkObj)
 
+
+
+  displayingredients();
+  getVideos(drinkObj.name);
+  console.log(drinkObj);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
