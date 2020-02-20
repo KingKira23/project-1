@@ -2,7 +2,7 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-// let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
 function Cocktail(name, id, ingredients, instructions, img ) {
   this.name = name;
@@ -71,6 +71,7 @@ function setVid(videoId) {
 function displayTheCocktail(drinkObj){
 
   getVideos(drinkObj.name);
+  console.log(drinkObj)
 
 }
 
