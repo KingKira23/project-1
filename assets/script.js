@@ -1,7 +1,9 @@
 // using Cocktail DB api to request a random cocktail:
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
-//let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
+let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
+let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+
 let ingredientsArr = [];
 
 //get random cocktail
@@ -12,13 +14,24 @@ $.ajax({
     .then(function (response) {
         //console.log(response.drinks[0]);
         //destructure the response object to discrete variables to use or display to the user
-        ({ idDrink, strDrink: name, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
-        //console.log(idDrink, name, instructions);
+        ({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
         buildIngredientsArray(response.drinks[0]);
 });
 
+//get specific cocktail
+let searchURL = searchCocktailURL + "Audios motherfucker";
 
-    //@@todo - response object has 15 ingredient properties and 15 corresponding measurement properties. Need to write a function to pair these up and omit all 'null' values
+$.ajax({
+    url: searchURL,
+    method: "GET"
+  })
+    .then(function (response) {
+        console.log(response);
+        //destructure the response object to discrete variables to use or display to the user
+        //({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
+        //console.log(idDrink, name, instructions);
+        //buildIngredientsArray(response.drinks[0]);
+    });
 
 function setIngredients(ingredientsArray) {
   ingredientsArray.forEach(function(value, index) {
@@ -34,7 +47,6 @@ function buildIngredientsArray(drinkObj){
     if (drinkObj[ingredient] === null){
       return;
     }
-    //console.log(drinkObj[ingredient]);
     ingredientsArr.push([drinkObj[ingredient], drinkObj[measurement]]);    
   }
   //console.log(ingredientsArr);
@@ -45,6 +57,11 @@ function setVid() {
   videoURL += videoId;
   let nextVideo = $(`<iframe width="1206" height="678" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
   $("#carousel").append(nextVideo);
+}
+
+//adds content to the page 
+function displayTheCocktail(){
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
