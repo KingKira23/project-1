@@ -16,7 +16,7 @@ $.ajax({
         //destructure the response object to discrete variables to use or display to the user
         ({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
         buildIngredientsArray(response.drinks[0]);
-    });
+});
 
 //get specific cocktail
 let searchURL = searchCocktailURL + "Audios motherfucker";
@@ -33,7 +33,12 @@ $.ajax({
         //buildIngredientsArray(response.drinks[0]);
     });
 
-    //build array of ingredients, break out of function when we reach an empty ingredient 
+function setIngredients(ingredientsArray) {
+  ingredientsArray.forEach(function(value, index) {
+    $("#cocktailIngredients").append(`<li>${value[0]} - ${value[1]}.</li>`);
+  })
+}
+
 function buildIngredientsArray(drinkObj){
   ingredientsArr = [];
   for (let i = 1; i < 15; i++){
@@ -44,6 +49,14 @@ function buildIngredientsArray(drinkObj){
     }
     ingredientsArr.push([drinkObj[ingredient], drinkObj[measurement]]);    
   }
+  //console.log(ingredientsArr);
+  setIngredients(ingredientsArr);
+}
+
+function setVid() {
+  videoURL += videoId;
+  let nextVideo = $(`<iframe width="1206" height="678" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+  $("#carousel").append(nextVideo);
 }
 
 //adds content to the page 
@@ -56,33 +69,21 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems);
 });
 
+let searchName = name;
+let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
-let nextVideo = $("<iframe>");
+let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + searchName + "+cocktails+recipe&key=" + youtubeAPIKey;
 
-nextVideo.attr("width", width).attr("height", height).attr("src", src);
-
-
-{/* < iframe 
-width="560" 
-height="315"
-src=""
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe> */}
-
-
-let searchName = drinkName;
-
-
-let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + searchName + "&key="+ youtubeAPIKey
+let videoURL = "https://www.youtube.com/embed/";
 
 $.ajax({
   url: videoSearchURL,
   method: "GET"
 })
-  .then(function (response) {
-    console.log(response);
-  })
+.then(function (response) {
+  videoId = response.items[2].id.videoId;
+  setVid();
+});
 
 var instance = M.Carousel.init({
   fullWidth: true,
