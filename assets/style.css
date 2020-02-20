@@ -60,3 +60,9 @@ body {
   #carousel{
     margin-top: 6%;
   }
+  #cocktailimg {
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
