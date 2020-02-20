@@ -2,9 +2,15 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+// let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
-let ingredientsArr = [];
+function Cocktail(name, id, ingredients, instructions, img ) {
+  this.name = name;
+  this.id = id;
+  this.ingredients = ingredients;
+  this.instructions = instructions;
+  this.image = img;
+}
 
 //get random cocktail
 $.ajax({
@@ -12,15 +18,15 @@ $.ajax({
     method: "GET"
   })
     .then(function (response) {
-        //console.log(response.drinks[0]);
         //destructure the response object to discrete variables to use or display to the user
         ({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
-        buildIngredientsArray(response.drinks[0]);
+        let ingredientArr = buildIngredientsArray(response.drinks[0]);
+        let nextDrink = new Cocktail(drinkName, idDrink, ingredientArr, instructions, strDrinkThumb);
+        displayTheCocktail(nextDrink);
 });
 
 //get specific cocktail
-let searchURL = searchCocktailURL + "Audios motherfucker";
-
+let searchURL = searchCocktailURL + "white russian";
 $.ajax({
     url: searchURL,
     method: "GET"
@@ -28,39 +34,41 @@ $.ajax({
     .then(function (response) {
         console.log(response);
         //destructure the response object to discrete variables to use or display to the user
-        //({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
-        //console.log(idDrink, name, instructions);
-        //buildIngredientsArray(response.drinks[0]);
-    });
+        ({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
+        let ingredientArr = buildIngredientsArray(response.drinks[0]);
+        let nextDrink = new Cocktail(drinkName, idDrink, ingredientArr, instructions, strDrinkThumb);
+        displayTheCocktail(nextDrink);
+  });
 
-function setIngredients(ingredientsArray) {
+  function buildIngredientsArray(drinkObj){
+    let ingredientsArr = [];
+    for (let i = 1; i < 15; i++){
+      let ingredient = "strIngredient" + i;
+      let measurement = "strMeasure" + i;
+      if (drinkObj[ingredient] === null){
+        return ingredientsArr;
+      }
+      ingredientsArr.push([drinkObj[ingredient], drinkObj[measurement]]);    
+    }
+  }
+
+    function setIngredients(ingredientsArray) {
   ingredientsArray.forEach(function(value, index) {
     $("#cocktailIngredients").append(`<li>${value[0]} - ${value[1]}.</li>`);
   })
 }
 
-function buildIngredientsArray(drinkObj){
-  ingredientsArr = [];
-  for (let i = 1; i < 15; i++){
-    let ingredient = "strIngredient" + i;
-    let measurement = "strMeasure" + i;
-    if (drinkObj[ingredient] === null){
-      return;
-    }
-    ingredientsArr.push([drinkObj[ingredient], drinkObj[measurement]]);    
-  }
-  //console.log(ingredientsArr);
-  setIngredients(ingredientsArr);
-}
-
-function setVid() {
+function setVid(videoId) {
+  let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;
-  let nextVideo = $(`<iframe width="1206" height="678" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+  let nextVideo = $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
   $("#carousel").append(nextVideo);
 }
 
 //adds content to the page 
-function displayTheCocktail(){
+function displayTheCocktail(drinkObj){
+
+  getVideos(drinkObj.name);
 
 }
 
@@ -69,21 +77,24 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems);
 });
 
-let searchName = name;
-let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
-let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + searchName + "+cocktails+recipe&key=" + youtubeAPIKey;
+function getVideos(name){
 
-let videoURL = "https://www.youtube.com/embed/";
+  let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + name + "+cocktails+recipe&key=" + youtubeAPIKey;
 
-$.ajax({
-  url: videoSearchURL,
-  method: "GET"
-})
-.then(function (response) {
-  videoId = response.items[2].id.videoId;
-  setVid();
-});
+  
+  $.ajax({
+    url: videoSearchURL,
+    method: "GET"
+  })
+  .then(function (response) {
+    let videoId = response.items[2].id.videoId;
+    setVid(videoId);
+  });
+
+}
+
+
 
 var instance = M.Carousel.init({
   fullWidth: true,

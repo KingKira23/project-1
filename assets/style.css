@@ -57,3 +57,6 @@ body {
     max-height: 64px;
     max-width: 250px;
   }
+  #carousel{
+    margin-top: 6%;
+  }
