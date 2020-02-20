@@ -2,7 +2,7 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-// let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
 function Cocktail(name, id, ingredients, instructions, img ) {
   this.name = name;
@@ -53,8 +53,8 @@ $.ajax({
   }
 
     function setIngredients(ingredientsArray) {
-  ingredientsArray.forEach(function(value, index) {
-    $("#cocktailIngredients").append(`<li>${value[0]} - ${value[1]}.</li>`);
+      ingredientsArray.forEach(function(value, index) {
+      $("#cocktailIngredients").append(`<li>${value[0]} - ${value[1]}.</li>`);
   })
 }
 
@@ -67,9 +67,7 @@ function setVid(videoId) {
 
 //adds content to the page 
 function displayTheCocktail(drinkObj){
-
   getVideos(drinkObj.name);
-
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -79,10 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function getVideos(name){
-
-  let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + name + "+cocktails+recipe&key=" + youtubeAPIKey;
-
-  
+  let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + name + "+cocktails+recipe&key=" + youtubeAPIKey;  
   $.ajax({
     url: videoSearchURL,
     method: "GET"
