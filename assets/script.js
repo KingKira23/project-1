@@ -66,9 +66,9 @@ function setVid(videoId) {
 }
 
 //adds content to the page 
-function displayTheCocktail(){
+function displayTheCocktail(drinkObj){
 
-  getVideos(name);
+  getVideos(drinkObj.name);
 
 }
 
