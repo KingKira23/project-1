@@ -12,6 +12,10 @@ function Cocktail(name, id, ingredients, instructions, img ) {
   this.image = img;
 }
 
+function getDrinkName() {
+  $("#search").val();
+}
+
 //get random cocktail
 $.ajax({
     url: randomCocktailURL,
