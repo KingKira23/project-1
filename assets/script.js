@@ -56,7 +56,9 @@ function buildIngredientsArray(drinkObj){
 function setVid() {
   videoURL += videoId;
   let nextVideo = $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-  $("#carousel").append(nextVideo);
+  $("#carouselOne").append(nextVideo);
+  
+
 }
 
 //adds content to the page 
