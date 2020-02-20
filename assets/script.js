@@ -116,7 +116,8 @@ $(document).on("click", ".drinkBtn", function(response) {
     url: searchAlc,
     method: 'GET'
   }).then(function(ajaxresponse) {
-    console.log(ajaxresponse);
+    console.log("this is the alcohol drink", ajaxresponse);
+
   })
 
 });
