@@ -59,12 +59,8 @@ body {
   .brand-logo {
     height: auto;
     width: auto;
-    max-height: 64px;
-    max-width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    max-height: 100%;
+    max-width: 250px;
   }
   #carousel{
     margin-top: 6%;
