@@ -2,7 +2,7 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+let youtubeAPIKey = "AIzaSyDAHB6N3SeKwl3z3xVIV1DOTwqp3gTAxa8";
 
 function Cocktail(name, id, ingredients, instructions, img ) {
   this.name = name;
@@ -12,6 +12,7 @@ function Cocktail(name, id, ingredients, instructions, img ) {
   this.image = img;
 }
 
+// for Searchbar
 function getDrinkName() {
   $("#search").val();
 }
@@ -105,3 +106,17 @@ function getVideos(name){
   });
   
 }
+
+$(document).on("click", ".drinkBtn", function(response) {
+  let drinkName = $(this).text(); 
+  let searchAlc = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + drinkName;
+  window.location.href="./assets/specific.html";
+
+  $.ajax({
+    url: searchAlc,
+    method: 'GET'
+  }).then(function(ajaxresponse) {
+    console.log(ajaxresponse);
+  })
+
+});
