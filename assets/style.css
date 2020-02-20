@@ -1,7 +1,12 @@
+*{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+   
   }
 
   main {
@@ -45,6 +50,12 @@ body {
   .page-footer{
     background-color: #7F5A83;
     color: #01161E;
+  }
+  .brand-logo {
+    height: auto;
+    width: auto;
+    max-height: 64px;
+    max-width: 250px;
   }
   #carousel{
     margin-top: 6%;
