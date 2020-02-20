@@ -62,7 +62,9 @@ function setVid(videoId) {
   let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;
   let nextVideo = $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-  $("#carousel").append(nextVideo);
+  $("#carouselOne").append(nextVideo);
+  
+
 }
 
 //adds content to the page 
@@ -84,6 +86,8 @@ function displayTheCocktail(drinkObj){
   }
   $("#cocktailimg").attr("src", drinkObj.image);
 
+  getVideos(drinkObj.name);
+  console.log(drinkObj)
 
 
 
