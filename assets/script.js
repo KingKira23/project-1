@@ -2,7 +2,8 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+//let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+let youtubeAPIKey = "AIzaSyDAHB6N3SeKwl3z3xVIV1DOTwqp3gTAxa8";
 
 function Cocktail(name, id, ingredients, instructions, img ) {
   this.name = name;
@@ -61,12 +62,13 @@ $.ajax({
 function setVid(videoId) {
   let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;
-  let carouselTile = $("<div>").
+  let carouselTile = $("<div>");
   carouselTile.attr("class", "carousel-item");
   let nextVideo = 
   $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
   $("#carouselOne").append(carouselTile); 
   carouselTile.append(nextVideo);
+  console.log(carouselTile);
 
 }
 
