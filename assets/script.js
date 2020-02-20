@@ -2,7 +2,7 @@
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-// let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
 
 function Cocktail(name, id, ingredients, instructions, img ) {
   this.name = name;
@@ -67,9 +67,29 @@ function setVid(videoId) {
 
 //adds content to the page 
 function displayTheCocktail(drinkObj){
+  var cocktailheading= $("#cocktailhead").text(drinkObj.name);
+  $("#ingredients").text(drinkObj.ingredients);
+  $("#instruction").text(drinkObj.instructions);
+  function displayingredients(){
+    for (i=0; i < drinkObj.ingredients.length; i++){
+      console.log(drinkObj.ingredients[i]);
+      var ingredientname= drinkObj.ingredients[i][0];
+      var ingredientmeasure= drinkObj.ingredients[i][1];
+      if (ingredientmeasure===null) {
+        ingredientmeasure= "to-taste"
+      }
+      $("#ingredients").append(ingredientname);
+      $("#instruction").append(ingredientmeasure);
+    }
+  }
+  $("#cocktailimg").attr("src", drinkObj.image);
 
+
+
+
+  displayingredients();
   getVideos(drinkObj.name);
-
+  console.log(drinkObj);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
