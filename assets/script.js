@@ -61,13 +61,20 @@ $.ajax({
 function setVid(videoId) {
   let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;
-  let nextVideo = $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-  $("#carousel").append(nextVideo);
+  let carouselTile = $("<div>").
+  carouselTile.attr("class", "carousel-item");
+  let nextVideo = 
+  $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+  $("#carouselOne").append(carouselTile); 
+  carouselTile.append(nextVideo);
+
 }
 
 //adds content to the page 
 function displayTheCocktail(drinkObj){
   getVideos(drinkObj.name);
+  console.log(drinkObj)
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -83,8 +90,11 @@ function getVideos(name){
     method: "GET"
   })
   .then(function (response) {
-    let videoId = response.items[2].id.videoId;
-    setVid(videoId);
+    for (let i = 0; i < 5; i++){
+      let videoId = response.items[i].id.videoId;
+      setVid(videoId);
+    }
+
   });
 
 }
