@@ -1,5 +1,5 @@
 *{
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Comfortaa', sans-serif;
   color: white;
 }
 
@@ -7,7 +7,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-   
+   background-color: #8CB369;
   }
 
 
@@ -42,6 +42,9 @@ body {
   #mainBG{
       
       background-color: #F4E285;
+      background-image: url(bkg.jpg);
+      background-blend-mode: normal;
+      background-size: 30%;
       width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -62,6 +65,7 @@ body {
   .page-footer{
     background-color: #BC4B51;
     color:white;
+    
   }
   .brand-logo {
     height: auto;
@@ -90,4 +94,11 @@ body {
   }
   label{
     color: white !important;
+  }
+  footer{
+    height: 100px;
+    width: 100%;
+    margin-bottom: -25px;
+  
+
   }
