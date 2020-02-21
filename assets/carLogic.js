@@ -30,7 +30,7 @@ $.ajax({
     url: searchAlc,
     method: 'GET'
   }).then(function(ajaxResponse) {
-    let randyNum = Math.floor(Math.random() * 15) + 1;
+    let randyNum = Math.floor(Math.random() * 14) + 1;
 
     for (let i = 0; i < 4; i++) {
         let drinkId = ajaxResponse.drinks[i+randyNum].idDrink;
