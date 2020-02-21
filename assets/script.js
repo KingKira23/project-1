@@ -64,23 +64,23 @@ function setVid(videoId) {
   videoURL += videoId;
   let carouselTile = $("<div>");
   carouselTile.attr("class", "carousel-item");
-  let nextVideo = 
-  $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-  $("#carouselOne").append(carouselTile); 
+  let nextVideo =
+    $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+  $("#carouselOne").append(carouselTile);
   carouselTile.append(nextVideo);
 }
 
 //adds content to the page 
-function displayTheCocktail(drinkObj){
+function displayTheCocktail(drinkObj) {
   $("#cocktailhead").text(drinkObj.name);
   $("#instruction").text(drinkObj.instructions);
   $("#ingredients").empty();
-  function displayingredients(){
-    for (i=0; i < drinkObj.ingredients.length; i++){
-      var ingredientname= drinkObj.ingredients[i][0];
-      var ingredientmeasure= drinkObj.ingredients[i][1];
-      if (ingredientmeasure===null) {
-        ingredientmeasure= "to-taste"
+  function displayingredients() {
+    for (i = 0; i < drinkObj.ingredients.length; i++) {
+      var ingredientname = drinkObj.ingredients[i][0];
+      var ingredientmeasure = drinkObj.ingredients[i][1];
+      if (ingredientmeasure === null) {
+        ingredientmeasure = "to-taste"
       }
       var $nextli = $("<li>").attr("class", "collection-item");
       $nextli.text(ingredientname + " : " + ingredientmeasure);
@@ -108,27 +108,27 @@ function getVideos(name) {
     url: videoSearchURL,
     method: "GET"
   })
-  .then(function (response) {
-    $("#carouselOne").empty();
-    for (let i = 0; i < 5; i++){
-      let videoId = response.items[i].id.videoId;
-      setVid(videoId);
-    }
-    $('.carousel').carousel({
-      fullWidth: true,
-      indicators: true
+    .then(function (response) {
+      $("#carouselOne").empty();
+      for (let i = 0; i < 5; i++) {
+        let videoId = response.items[i].id.videoId;
+        setVid(videoId);
+      }
+      $('.carousel').carousel({
+        fullWidth: true,
+        indicators: true
+      });
+
     });
 
-  });
-  
   $("form").on("submit", function (event) {
     event.preventDefault()
-  
-    let userSearch = $("#search").val()
+
+    let userSearch = $(".search").val()
     // $("input").empty()
-  
+
     cocktail(userSearch)
-    
+
   })
 
 }
