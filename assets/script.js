@@ -1,20 +1,9 @@
-// using Cocktail DB api to request a random cocktail:
-$("form").on("submit", function (event) {
-  event.preventDefault()
 
-  let userSearch = $("#search").val()
-  // $("input").empty()
-
-  cocktail(userSearch)
-  
-})
-// let userSearch = userInput
-// console.log(userSearch)
 
 let randomCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/random.php?api-key=1";
 let searchCocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?api-key=1&s=";
-let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
-
+//let youtubeAPIKey = "AIzaSyC1DlLmv-ouNQJzBC-RC-jYzsLttiPumR0";
+let youtubeAPIKey = "AIzaSyDAHB6N3SeKwl3z3xVIV1DOTwqp3gTAxa8";
 function Cocktail(name, id, ingredients, instructions, img) {
   this.name = name;
   this.id = id;
@@ -45,7 +34,6 @@ function cocktail(userSearch) {
     method: "GET"
   })
     .then(function (response) {
-      console.log(response);
       //destructure the response object to discrete variables to use or display to the user
       ({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
       let ingredientArr = buildIngredientsArray(response.drinks[0]);
@@ -66,48 +54,40 @@ function buildIngredientsArray(drinkObj) {
   }
 }
 
-function setIngredients(ingredientsArray) {
-  ingredientsArray.forEach(function (value, index) {
-    $("#cocktailIngredients").append(`<li>${value[0]} - ${value[1]}.</li>`);
-  })
-}
+
 
 function setVid(videoId) {
   let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;
-  let nextVideo = $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-  $("#carouselOne").append(nextVideo);
-
-
+  let carouselTile = $("<div>");
+  carouselTile.attr("class", "carousel-item");
+  let nextVideo = 
+  $(`<iframe width="100%" height="100%" src=${videoURL} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+  $("#carouselOne").append(carouselTile); 
+  carouselTile.append(nextVideo);
 }
 
 //adds content to the page 
 function displayTheCocktail(drinkObj){
-  var cocktailheading= $("#cocktailhead").text(drinkObj.name);
-  $("#ingredients").text(drinkObj.ingredients);
+  $("#cocktailhead").text(drinkObj.name);
   $("#instruction").text(drinkObj.instructions);
+  $("#ingredients").empty();
   function displayingredients(){
     for (i=0; i < drinkObj.ingredients.length; i++){
-      console.log(drinkObj.ingredients[i]);
       var ingredientname= drinkObj.ingredients[i][0];
       var ingredientmeasure= drinkObj.ingredients[i][1];
       if (ingredientmeasure===null) {
         ingredientmeasure= "to-taste"
       }
-      $("#ingredients").append(ingredientname);
-      $("#instruction").append(ingredientmeasure);
+      var $nextli = $("<li>").attr("class", "collection-item");
+      $nextli.text(ingredientname + " : " + ingredientmeasure);
+      $("#ingredients").append($nextli);
     }
   }
   $("#cocktailimg").attr("src", drinkObj.image);
 
-  getVideos(drinkObj.name);
-  console.log(drinkObj)
-
-
-
   displayingredients();
   getVideos(drinkObj.name);
-  console.log(drinkObj);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -125,17 +105,27 @@ function getVideos(name) {
     url: videoSearchURL,
     method: "GET"
   })
-    .then(function (response) {
-      let videoId = response.items[2].id.videoId;
+  .then(function (response) {
+    $("#carouselOne").empty();
+    for (let i = 0; i < 5; i++){
+      let videoId = response.items[i].id.videoId;
       setVid(videoId);
+    }
+    $('.carousel').carousel({
+      fullWidth: true,
+      indicators: true
     });
 
+  });
+
+  $("form").on("submit", function (event) {
+    event.preventDefault()
+  
+    let userSearch = $("#search").val()
+    // $("input").empty()
+  
+    cocktail(userSearch)
+    
+  })
+
 }
-
-
-
-var instance = M.Carousel.init({
-  fullWidth: true,
-  indicators: true
-});
-
