@@ -10,6 +10,7 @@ body {
    
   }
 
+
   main {
     flex: 1 0 auto;
   }
@@ -25,6 +26,11 @@ body {
     margin: 4%;
     border: 1px solid black;
     border-radius: 10px;
+  }
+  
+  .collection-item{
+    color: black;
+
   }
   .container{
     width: 100%;
@@ -74,4 +80,14 @@ body {
   }
   label {
     color: white;
+  }
+  input{
+    min-height: 54px;
+    width: 64px;
+  }
+  form{
+    margin: 1%;
+  }
+  label{
+    color: white !important;
   }
