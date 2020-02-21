@@ -67,7 +67,16 @@ body {
     margin-top: 6%;
   }
   
-  
+  .drinkBtn {
+    padding: 0px 10px;
+  }
+  @media screen and (max-width: 994px) {
+    .drinkBtn {
+      position: relative;
+      left: 2vw;
+      color: black;
+    }
+  }
   #classic {
     position: relative;
     top: 5vh;
