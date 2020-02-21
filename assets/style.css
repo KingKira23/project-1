@@ -85,6 +85,16 @@ body {
   label {
     color: white;
   }
+  input{
+    min-height: 54px;
+    width: 64px;
+  }
+  form{
+    margin: 1%;
+  }
+  label{
+    color: white !important;
+  }
   footer{
     height: 100px;
     width: 100%;
