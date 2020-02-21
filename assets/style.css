@@ -42,6 +42,9 @@ body {
   #mainBG{
       
       background-color: #F4E285;
+      background-image: url(brick.jpg);
+      background-blend-mode: normal;
+      background-size: 30%;
       width: 100%;
     padding-right: 15px;
     padding-left: 15px;
