@@ -41,15 +41,14 @@ $.ajax({
             ({ strDrink: drinkName, strInstructions: instructions, strGlass: glass, strDrinkThumb: drinkImg } = response.drinks[0]);
             let ingredientArr = buildIngredientsArray(response.drinks[0]);
             drinkObj[i] = new Cocktail(drinkName, glass, ingredientArr, instructions, drinkImg);
+ 
+            $($(".carousel-item")[i]).css("background-image", `url(${drinkImg})`);
         });
     }
+
+    
 });
 
-console.log(drinkObj);
-
-$(".carousel-item").each(function(index) {
-    $(this).css("background-image", `url(${drinkObj[index].img})`);
-});
 
 let options = {
     fullWidth: true
@@ -61,28 +60,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, options);
     $(".carousel").css({"height": "400px"});
+    document.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        switch(event.keyCode) {
+            case 39:
+                instances[0].next();
+            case 37:
+                instances[0].prev();
+            default:
+                console.error("keyup eventListener");
+                return;
+        }
+    });
 });  
-
-var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
-});
-
-
-
-document.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    switch(event.keyCode) {
-        case 39:
-            instance.next();
-        case 37:
-            instance.prev();
-        default:
-            console.error("keyup eventListener");
-            return;
-    }
-});
-
-
-
-
