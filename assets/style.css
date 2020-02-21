@@ -75,6 +75,10 @@ body {
   #carousel{
     margin-top: 6%;
   }
+
+  .carousel-item{
+    background-position: center;
+  }
   
   .drinkBtn {
     padding: 0px 10px;
