@@ -41,11 +41,11 @@ body {
   }
   #mainBG{
       
-      background-color: #F4E285;
-      background-image: url(brick.jpg);
-      background-blend-mode: normal;
-      background-size: 30%;
-      width: 100%;
+    background-color: #F4E285;
+    background-image: url(brick.jpg);
+    background-blend-mode: normal;
+    background-size: 30%;
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -78,6 +78,11 @@ body {
 
   .carousel-item{
     background-position: center;
+  }
+
+  #ingredients {
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
   
   .drinkBtn {
