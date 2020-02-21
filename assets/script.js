@@ -71,12 +71,6 @@ function buildIngredientsArray(drinkObj) {
   }
 }
 
-  //   function setIngredients(ingredientsArray) {
-  //     ingredientsArray.forEach(function(value, index) {
-  //     $("#cocktailIngredients").append(`<li>${value[0]} - ${value[1]}.</li>`);
-  // })
-//}
-
 function setVid(videoId) {
   let videoURL = "https://www.youtube.com/embed/";
   videoURL += videoId;

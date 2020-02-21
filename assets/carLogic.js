@@ -25,6 +25,7 @@ function buildIngredientsArray(drinkObj){
     }
 }
 
+
 $.ajax({
     url: searchAlc,
     method: 'GET'
@@ -48,7 +49,10 @@ $.ajax({
 console.log(drinkObj);
 
 $(".carousel-item").each(function(index) {
-    $(this).css("background-image", `url(${drinkObj[index].img})`);
+    console.log(this, index);
+    console.log(drinkObj);
+    console.log(drinkObj[index]);
+    //$(this).css("background-image", `url(${drinkObj[index].img})`);
 });
 
 let options = {
@@ -56,7 +60,6 @@ let options = {
 }
 
 // Slider
-
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, options);
@@ -67,8 +70,6 @@ var instance = M.Carousel.init({
     fullWidth: true,
     indicators: true
 });
-
-
 
 document.addEventListener("keyup", function(event) {
     event.preventDefault();
