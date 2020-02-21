@@ -108,14 +108,7 @@ function getVideos(name){
 }
 
 $(document).on("click", ".drinkBtn", function(response) {
-  let drinkName = $(this).text(); 
-  let searchAlc = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + drinkName;
-  window.location.href="./assets/specific.html";
-
-  $.ajax({
-    url: searchAlc,
-    method: 'GET'
-  }).then(function(ajaxresponse) {
-    console.log("this is the alcohol drink", ajaxresponse);
-  })
+  let drinkName = $(this).text();
+  localStorage.setItem("drinkName", drinkName); 
+  window.location.href="./assets/cocktails.html";
 });
