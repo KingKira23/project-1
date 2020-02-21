@@ -5,8 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+    crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="assets/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -15,13 +21,14 @@
         <nav>
             <div class="nav-wrapper">
                 <img src="./images/cocktails.jpg" class="brand-logo">
+                <img src="your-loader-url"/>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
                         <form>
                             <div class="input-field">
                                 <input id="search" type="search" required>
-                                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                <label class="label-icon" for="search"><i class="fas fa-cocktail"></i>SEARCH</label>
                                 <i class="material-icons">close</i>
                             </div>
                         </form>
@@ -30,6 +37,9 @@
                     <li><div class="drinkBtn" type="button">Vodka</div></li>
                     <li><div class="drinkBtn" type="button">Rum</div></li>
                     <li><div class="drinkBtn" type="button">Gin</div></li>
+                    <li><a href="#">Random Cocktail</a></li>
+                    <li><a href="#">Advanced Search</a></li>
+                    
                 </ul>
             </div>
         </nav>
@@ -38,6 +48,18 @@
             <li><div class="drinkBtn" type="button">Vodka</div></li>
             <li><div class="drinkBtn" type="button">Rum</div></li>
             <li><div class="drinkBtn" type="button">Gin</div></li>
+            <li>
+                <form>
+                    <div class="input-field">
+                        <input id="search" type="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+            </li>
+            <li><a href="#">Random Cocktail</a></li>
+            <li><a href="#">Advanced Search</a></li>
+            
         </ul>
     </header>
 
@@ -47,15 +69,15 @@
             <div class="row">
                 <div class="col m6">
                     <div class="row drinkStats">
-                        <h2>Some Cocktail</h2>
+                        <h2 id="cocktailhead">Some Cocktail</h2>
                     </div>
                     <div class="row drinkStats">
 
-                        <div class="col m6" id="cocktailimg">
+                        <div class="col s6">
 
-                            <img src="https://www.rpnation.com/gallery/250-x-250-placeholder.30091/full">
+                            <img id="cocktailimg" src="https://www.rpnation.com/gallery/250-x-250-placeholder.30091/full">
 
-                            </ul>
+
                         </div>
                         <div class="col m6">
                             <ul id="ingredients">
@@ -78,13 +100,11 @@
                 <div id="carousel" class="col m6">
 
                     <div class="col m12">
-
-                        <div class="carousel carousel-slider center" id="carouselOne">
-                            
+                        <div class="row">
+                            <div class="carousel carousel-slider center" id="carouselOne">                                
+                            </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
 
@@ -107,23 +127,16 @@
                         <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://shawnatx.github.io/">Shawn Wright</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
-        </div>
+
     </footer>
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="assets/script.js"></script>
 </body>
 
