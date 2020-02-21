@@ -44,32 +44,59 @@ $.ajax({
             drinkObj[i] = new Cocktail(drinkName, glass, ingredientArr, instructions, drinkImg);
  
             $($(".carousel-item")[i]).css("background-image", `url(${drinkImg})`);
+            genList(drinkObj[i])
         });
     }
-
-    
 });
-
 
 let options = {
     fullWidth: true
 }
 
-// Slider
+
+function genList(obj) {
+    $("#ingredients").empty();
+    $("#ingredients").append(`<h3>${obj.name}</h3>`);
+    $("#ingredients").append(`<li class='collection-item'>${obj.container}</li>`);
+    obj.ingredients.forEach(function(elArr, i) {
+    $("#ingredients").append(`<li class='collection-item'>${elArr[0]} : ${elArr[1]}`);
+    });
+    $("#ingredients").append(`<li class='collection-item'>${obj.instructions}</li>`);
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, options);
     $(".carousel").css({"height": "400px"});
+    
+    let i = 0;
     document.addEventListener("keyup", function(event) {
         event.preventDefault();
         switch(event.keyCode) {
             case 39:
                 instances[0].next();
+                if (drinkObj.length) {
+                    i++;
+                    if (i >= 4) {
+                        i = 0;
+                    }    
+                    genList(drinkObj[i]);
+                }
+                break;
             case 37:
-                instances[0].prev();
+                instances[0].next();
+                if (drinkObj.length) {
+                    i++;
+                    if (i >= 4) {
+                        i = 0;
+                    }
+                    genList(drinkObj[i]);
+                }
+                break;
             default:
                 console.error("keyup eventListener");
-                return;
+                break;
         }
     });
 });  

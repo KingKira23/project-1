@@ -1,5 +1,5 @@
 *{
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Comfortaa', sans-serif;
   color: white;
 }
 
@@ -7,7 +7,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-   
+   background-color: #8CB369;
   }
 
 
@@ -41,11 +41,11 @@ body {
   }
   #mainBG{
       
-      background-color: #F4E285;
-      background-image: url(brick.jpg);
-      background-blend-mode: normal;
-      background-size: 30%;
-      width: 100%;
+    background-color: #F4E285;
+    background-image: url(bkg.jpg);
+    background-blend-mode: normal;
+    background-size: 30%;
+    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -65,6 +65,7 @@ body {
   .page-footer{
     background-color: #BC4B51;
     color:white;
+    
   }
   .brand-logo {
     height: auto;
@@ -78,6 +79,11 @@ body {
 
   .carousel-item{
     background-position: center;
+  }
+
+  #ingredients {
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
   
   .drinkBtn {
@@ -116,4 +122,21 @@ body {
   }
   label {
     color: white;
+  }
+  input{
+    min-height: 54px;
+    width: 64px;
+  }
+  form{
+    margin: 1%;
+  }
+  label{
+    color: white !important;
+  }
+  footer{
+    height: 100px;
+    width: 100%;
+    margin-bottom: -25px;
+  
+
   }
