@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             default:
+                console.error("keyup eventListener");
                 break;
         }
     });
