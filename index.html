@@ -18,8 +18,7 @@
 
         <nav>
             <div class="nav-wrapper">
-                <img src="./images/cocktails.jpg" class="brand-logo">
-                <img src="your-loader-url"/>
+                <img src="images/cocktails.jpg" class="brand-logo">
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
@@ -30,8 +29,7 @@
                             </div>
                         </form>
                     </li>
-                    <li><a href="#">Random Cocktail</a></li>
-                    <li><a href="#">Advanced Search</a></li>
+                    <li><a id="newRandomDrink">Random Cocktail</a></li>
                     <li><div class="drinkBtn" type="button">Tequila</div></li>
                     <li><div class="drinkBtn" type="button">Vodka</div></li>
                     <li><div class="drinkBtn" type="button">Rum</div></li>
@@ -45,12 +43,12 @@
                 <form>
                     <div class="input-field">
                         <input class="search" id="msearch" type="search" required>
-                        <label for="msearch"><i class="material-icons"><i class="fas fa-cocktail"></i>search</label>
+                        <label for="msearch"><i class="material-icons fas fa-cocktail"></i>search</label>
                         <i class="material-icons">close</i>
                     </div>
                 </form>
             </li>
-            <li><a href="#">Random Cocktail</a></li>
+            <li><p id="newRandomDrink">Random Cocktail</p></li>
             <li><a href="#">Advanced Search</a></li>
             <li><div class="drinkBtn" type="button">Tequila</div></li>
             <li><div class="drinkBtn" type="button">Vodka</div></li>
@@ -68,7 +66,6 @@
                         <h2 id="cocktailhead"></h2>
                     </div>
                     <div class="row drinkStats">
-
                         <div class="col s6">
 
                             <img id="cocktailimg"
@@ -77,9 +74,7 @@
                         </div>
                         <div class="col m6">
                             <ul id="ingredients" class="collection">
-
                             </ul>
-
                         </div>
 
                     </div>

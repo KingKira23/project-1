@@ -18,10 +18,11 @@ function getDrinkName() {
 }
 
 //get random cocktail
-$.ajax({
-  url: randomCocktailURL,
-  method: "GET"
-})
+function getRandomDrink(){
+  $.ajax({
+    url: randomCocktailURL,
+    method: "GET"
+  })
   .then(function (response) {
     //destructure the response object to discrete variables to use or display to the user
     ({ idDrink, strDrink: drinkName, strInstructions: instructions, strDrinkThumb } = response.drinks[0]);
@@ -29,10 +30,10 @@ $.ajax({
     let nextDrink = new Cocktail(drinkName, idDrink, ingredientArr, instructions, strDrinkThumb);
     displayTheCocktail(nextDrink);
   });
+}
 
 //get specific cocktail
 function cocktail(userSearch) {
-
   let searchURL = searchCocktailURL + userSearch;
   $.ajax({
     url: searchURL,
@@ -98,11 +99,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.Sidenav.init(elems);
 });
 
-
 function getVideos(name) {
 
   let videoSearchURL = "https://www.googleapis.com/youtube/v3/search?maxResults=5&part=snippet&q=" + name + "+cocktails+recipe&key=" + youtubeAPIKey;
-
 
   $.ajax({
     url: videoSearchURL,
@@ -133,8 +132,27 @@ function getVideos(name) {
 
 }
 
+
+$("form").on("submit", function (event) {
+  event.preventDefault()
+
+  let userSearch = $("#search").val()
+  // $("input").empty()
+
+  cocktail(userSearch)
+  
+})
+
+
 $(document).on("click", ".drinkBtn", function(response) {
   let drinkName = $(this).text();
   localStorage.setItem("drinkName", drinkName); 
   window.location.href="./assets/cocktails.html";
 });
+
+$("#newRandomDrink").on("click", function(){
+  getRandomDrink();
+});
+
+
+getRandomDrink();

@@ -96,6 +96,7 @@ body {
   
   .drinkBtn {
     padding: 0px 10px;
+    color: black;
   }
   @media screen and (max-width: 994px) {
     .drinkBtn {
@@ -110,8 +111,6 @@ body {
     width: 600px;
     left: 15vw;
   }
-  
-  
 
 @media screen and (max-width: 1024px) {
   #classic {
