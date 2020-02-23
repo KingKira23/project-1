@@ -81,8 +81,10 @@ body {
   }
 
   .carousel-item{
-    background-position: top;
+    background-position: center;
     background-clip: content-box;
+    background-position-y: 0px;
+    background-size: contain;
   }
 
   #ingDad {
@@ -105,16 +107,16 @@ body {
     margin: 9px;
     position: relative;
     top: 5vh;
-    width: 600px;
-    left: 15vw;
+    width: 400px;
+    left: 28vw;
     border-radius: 10px;
     z-index: 1;
   }
 
 @media screen and (max-width: 1024px) {
   #classic {
-    width: 60vw;
-    height: 250px!important;
+    width: 59vw;
+    height: 215px!important;
     position: relative;
     left: 10vw;
     top: 5vh;
