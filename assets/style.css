@@ -30,7 +30,8 @@ body {
   
   .collection-item{
     color: black;
-
+    padding: 10px 20px;
+    background-color: white;
   }
   .container{
     width: 100%;
