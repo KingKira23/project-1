@@ -81,6 +81,12 @@ body {
     background-position: center;
   }
 
+  #ingDad {
+    background-color:#5B8E7D;
+    min-width: 75vw;
+    padding: 20px;
+    border-radius: 15px;
+  }
   #ingredients {
     margin-top: 40px;
     margin-bottom: 20px;
@@ -134,9 +140,7 @@ body {
     color: white !important;
   }
   footer{
-    height: 100px;
+    height: 100%;
     width: 100%;
     margin-bottom: -25px;
-  
-
   }

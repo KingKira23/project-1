@@ -30,8 +30,10 @@ $.ajax({
     url: searchAlc,
     method: 'GET'
   }).then(function(ajaxResponse) {
+    let randyNum = Math.floor(Math.random() * 14) + 1;
+
     for (let i = 0; i < 4; i++) {
-        let drinkId = ajaxResponse.drinks[i].idDrink;
+        let drinkId = ajaxResponse.drinks[i+randyNum].idDrink;
         let searchURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId;
         $.ajax({
             url: searchURL,
@@ -59,7 +61,10 @@ function genList(obj) {
     $("#ingredients").append(`<h3>${obj.name}</h3>`);
     $("#ingredients").append(`<li class='collection-item'>${obj.container}</li>`);
     obj.ingredients.forEach(function(elArr, i) {
-    $("#ingredients").append(`<li class='collection-item'>${elArr[0]} : ${elArr[1]}`);
+        if (elArr[1] === null) {
+            elArr[1] = "Your touch."
+        }
+        $("#ingredients").append(`<li class='collection-item'>${elArr[0]} : ${elArr[1]}`);
     });
     $("#ingredients").append(`<li class='collection-item'>${obj.instructions}</li>`);
 }
@@ -95,8 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             default:
-                console.error("keyup eventListener");
                 break;
         }
     });
 });  
+
+$(document).on("click", ".brand-logo", function(response) {
+    window.location.href="../index.html";
+});
