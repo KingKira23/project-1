@@ -114,16 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     genList(drinkObj[i]);
                 }
                 break;
-            case 37:
-                instances[0].next();
-                if (drinkObj.length) {
-                    i++;
-                    if (i >= 4) {
-                        i = 0;
-                    }
-                    genList(drinkObj[i]);
-                }
-                break;
             default:
                 console.error("keyup eventListener");
                 break;
