@@ -32,6 +32,9 @@ body {
     color: black;
     padding: 10px 20px;
     background-color: white;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(224,224,224);
   }
   .container{
     width: 100%;
@@ -97,13 +100,7 @@ body {
     padding: 0px 10px;
     color: black;
   }
-  @media screen and (max-width: 994px) {
-    .drinkBtn {
-      position: relative;
-      left: 2vw;
-      color: black;
-    }
-  }
+  
   #classic {
     position: relative;
     top: 5vh;
