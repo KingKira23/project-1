@@ -25,12 +25,37 @@ function buildIngredientsArray(drinkObj){
     }
 }
 
+function drinkRange(drink) {
+    
+    let randyRange;
+    switch (drink) {
+        case "Tequila":
+            randyRange = 19;
+            break;
+        case "Vodka":
+            randyRange = 79;
+            break;
+        case "Rum":
+            randyRange = 13;
+            break;
+        case "Gin":
+            randyRange = 90;
+            break;
+        default:
+            randyRange = 14;
+            break;
+    }
+    return randyRange;
+}
+
 
 $.ajax({
     url: searchAlc,
     method: 'GET'
   }).then(function(ajaxResponse) {
-    let randyNum = Math.floor(Math.random() * 14) + 1;
+
+    let randyRange = drinkRange(drinkName);
+    let randyNum = Math.floor(Math.random() * randyRange) + 1;
 
     for (let i = 0; i < 4; i++) {
         let drinkId = ajaxResponse.drinks[i+randyNum].idDrink;
@@ -86,16 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (i >= 4) {
                         i = 0;
                     }    
-                    genList(drinkObj[i]);
-                }
-                break;
-            case 37:
-                instances[0].next();
-                if (drinkObj.length) {
-                    i++;
-                    if (i >= 4) {
-                        i = 0;
-                    }
                     genList(drinkObj[i]);
                 }
                 break;
